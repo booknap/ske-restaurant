@@ -66,15 +66,18 @@ public class Restaurant {
 		totalQuantity[c - 1] += quantity;
 		price[c - 1] = totalQuantity[c - 1] * productPrice[c - 1];
 	}
-
-	public static void main(String[] args) {
-		System.out.print("--------- Welcome to SKE Restaurant ---------\n");
+	
+	public static void printMenu(){
+		System.out.print("--- Welcome to SKE Restaurant ---\n");
 		for (int x = 0; x < menu.length; x++) {
 			System.out.printf("%d.) %s\t\t%d Baht.\n", x + 1, menu[x], productPrice[x]);
 		}
 
 		System.out.printf("%d.) Total\n%d.) Exit\n", menu.length + 1, menu.length + 2);
+	}
 
+	public static void main(String[] args) {
+		printMenu();
 		int choice = 0;
 
 		while (true) {
