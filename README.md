@@ -1,3 +1,2 @@
-# Ske Restaurant
-by bookyboo
-"# ske-restaurant" 
+SKE Restaurant by Napasai Sutthichutipong
+
