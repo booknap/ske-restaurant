@@ -13,7 +13,13 @@ import java.util.Scanner;
 public class Restaurant {
 
 	public static Scanner sc = new Scanner(System.in);
-
+	static int quantity = 0;
+	static String[] menu = { "Pizza", "Spaghetti", "Chicken", "Coke" };
+	static int[] productPrice = { 250, 150, 120, 45 };
+	static int[] bankAndCoin = { 1000, 500, 100, 50, 20, 10, 5, 2, 1 };
+	static int[] totalQuantity = new int[menu.length];
+	static int[] price = new int[menu.length];
+	
 	public static void printChange(int cha) {
 		System.out.printf("\nYour change is %d Baht.\n", cha);
 		System.out.print("+----------------------+------+\n");
@@ -54,13 +60,6 @@ public class Restaurant {
 		System.out.print("+------------------+---------+-----------+\n");
 	}
 
-	static int quantity = 0;
-	static String[] menu = { "Pizza", "Spaghetti", "Chicken", "Coke" };
-	static int[] productPrice = { 250, 150, 120, 45 };
-	static int[] bankAndCoin = { 1000, 500, 100, 50, 20, 10, 5, 2, 1 };
-	static int[] totalQuantity = new int[menu.length];
-	static int[] price = new int[menu.length];
-
 	public static void getPrice(int c) {
 		quantity = sc.nextInt();
 		totalQuantity[c - 1] += quantity;
@@ -75,11 +74,9 @@ public class Restaurant {
 
 		System.out.printf("%d.) Total\n%d.) Exit\n", menu.length + 1, menu.length + 2);
 	}
-
-	public static void main(String[] args) {
-		printMenu();
+	
+	public static void selectMenu(){
 		int choice = 0;
-
 		while (true) {
 			System.out.print("\nEnter your Choice: ");
 			choice = sc.nextInt();
@@ -102,6 +99,11 @@ public class Restaurant {
 				getPrice(choice);
 			}
 		}
+	}
+
+	public static void main(String[] args) {
+		printMenu();
+		selectMenu();
 	}
 
 }
