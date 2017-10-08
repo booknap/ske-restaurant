@@ -14,20 +14,26 @@ public class Restaurant {
 
 	public static Scanner sc = new Scanner(System.in);
 
-	public static void createTable() {
-		
+	public static int calculateTotalPrice(){
 		int totalPrice = 0;
+		for (int i = 0; i < menu.length; i++) {
+			totalPrice += price[i];
+		}
+		
+		return totalPrice;
+	}
+	
+	public static void createTable() {
 		System.out.print("+------ Menu ------+-- Qty --+-- Price --+\n");
 		for (int i = 0; i < menu.length; i++) {
 			if (totalQuantity[i] != 0) {
 				System.out.printf("| %-17s|%9d|%11d|\n", menu[i], totalQuantity[i], price[i]);
 			}
-			totalPrice += price[i];
 		}
-		System.out.print("+------------------+---------+-----------+\n");
-		System.out.printf("|%-28s|%11d|\n", " Total", totalPrice );
-		System.out.print("+------------------+---------+-----------+\n");
 		
+		System.out.print("+------------------+---------+-----------+\n");
+		System.out.printf("|%-28s|%11d|\n", " Total", calculateTotalPrice() );
+		System.out.print("+------------------+---------+-----------+\n");
 	}
 	
 	static int quantity = 0;
@@ -42,14 +48,14 @@ public class Restaurant {
 		price[c - 1] = totalQuantity[c - 1] * productPrice[c - 1];
 	}
 
-	public static void SKERestaurant() {
+	public static void main(String[] args) {
 		System.out.print("--------- Welcome to SKE Restaurant ---------\n");
 		for (int x = 0; x < menu.length; x++) {
 			System.out.printf("%d.) %s\t\t%d Baht.\n", x + 1, menu[x], productPrice[x]);
 		}
 		
 		System.out.printf("4.) Total\n5.) Exit\n");
-
+		
 		int choice = 0;
 
 		while (true) {
@@ -67,10 +73,6 @@ public class Restaurant {
 				getPrice(choice);
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		SKERestaurant();
 	}
 
 }
